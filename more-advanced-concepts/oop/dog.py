@@ -1,7 +1,7 @@
 class Dog:
-    __slots__ = ['__name', '__age', '__race']
+    __slots__ = ['__name', '__age', '__race']    
     
-    def __init__(self, name, age=None, race=None):
+    def __init__(self, name: str, age: int=None, race: str=None):
         self.__name = name
         self.__age = age
         self.__race = race        
@@ -10,11 +10,11 @@ class Dog:
         if self.__age == None and self.race == None:
             return self.name
         elif self.__age == None:
-            return f"{self.name}, dog of race {self.race}."            
+            return f"{self.name}, dog of race {self.race}"            
         elif self.__race == None:
-            return f"{self.name}, {self.age} years old dog."
+            return f"{self.name}, {self.age} years old dog"
         else:
-            return f"{self.name}, {self.age} years old {self.race}."
+            return f"{self.name}, {self.age} years old {self.race}"
         
     def get_name(self):
         return self.__name

@@ -1,9 +1,13 @@
 from dog import Dog
+from typing import Literal
+# from typeguard import typechecked
 
 class Person:
     __slots__ = ['__name', '__age', '__gender', '__partner', '__nr_of_kids', '__dog']
     
-    def __init__(self, name: str, age: int=None, gender=None, partner=None, nr_of_kids: int=None):
+    genders = Literal['male', 'female', 'other']
+    # @typechecked
+    def __init__(self, name: str, age: int=None, gender: genders=None, partner=None, nr_of_kids: int=None):
         if partner != None:
             assert type(partner) == Person
         self.__name = name
