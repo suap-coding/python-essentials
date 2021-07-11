@@ -7,7 +7,7 @@ class Person:
     
     genders = Literal['male', 'female', 'other']
     @typechecked
-    def __init__(self, name: str, age: int=None, gender: genders=None, partner=None, nr_of_kids: int=None):
+    def __init__(self, name: str, age: int=None, gender: genders=None, partner=None, nr_of_kids: int=None) -> None:
         if partner != None:
             assert type(partner) == Person
         self.__name = name
@@ -16,7 +16,7 @@ class Person:
         self.__partner = partner
         self.__nr_of_kids = nr_of_kids
 
-    def is_hot(self):
+    def is_hot(self) -> bool:
         if self.__gender == None:
             return False
         elif(self.__gender == 'female'):
@@ -24,7 +24,7 @@ class Person:
         else:
             return False
         
-    def is_handsome(self):
+    def is_handsome(self) -> bool:
         if self.__gender == None:
             return False
         elif(self.__gender == 'male'):            
@@ -36,13 +36,14 @@ class Person:
     def assign_dog(self, dog: Dog):
             self.__dog = dog
         
-    def get_dog(self):
+    def get_dog(self) -> Dog:
         return self.__dog
     
     # @typechecked
     def assign_partner(self, partner):
         assert type(partner) == Person
         self.__partner = partner
+        return partner
     
     def get_partner(self):
         return self.__partner
@@ -50,7 +51,7 @@ class Person:
     dog = property(get_dog, assign_dog)
     partner = property(get_partner, assign_partner)
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         repr = self.__name
         if self.__age != None:
             repr += f", age {self.__age}"
