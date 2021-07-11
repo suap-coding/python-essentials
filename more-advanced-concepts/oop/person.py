@@ -1,6 +1,7 @@
 from dog import Dog
 from typing import Literal
 from typeguard import typechecked
+from copy import deepcopy
 
 class Person:
     __slots__ = ['__name', '__age', '__gender', '__partner', '__nr_of_kids', '__dog']
@@ -9,11 +10,11 @@ class Person:
     @typechecked
     def __init__(self, name: str, age: int=None, gender: genders=None, partner=None, nr_of_kids: int=None) -> None:
         if partner != None:
-            assert type(partner) == Person
+            assert type(partner) == Person, "Partner has to be an object of class Person."
+            self.__partner = partner
         self.__name = name
         self.__age = age
         self.__gender = gender
-        self.__partner = partner
         self.__nr_of_kids = nr_of_kids
 
     def is_hot(self) -> bool:
@@ -41,7 +42,7 @@ class Person:
     
     # @typechecked
     def assign_partner(self, partner):
-        assert type(partner) == Person
+        assert type(partner) == Person, "Partner has to be an object of class Person."
         self.__partner = partner
         return partner
     
