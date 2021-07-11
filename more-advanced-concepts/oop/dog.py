@@ -1,6 +1,9 @@
+from typeguard import typechecked
+
 class Dog:
     __slots__ = ['__name', '__age', '__race']    
     
+    @typechecked
     def __init__(self, name: str, age: int=None, race: str=None):
         self.__name = name
         self.__age = age
@@ -19,7 +22,8 @@ class Dog:
     def get_name(self):
         return self.__name
     
-    def change_name(self, new_name):
+    @typechecked
+    def change_name(self, new_name: str):
         self.__name = new_name
     
     def get_age(self):
